@@ -32,8 +32,8 @@ function displayItems() {
     console.log("Item #: " + res[0].item_id + "     Product name: " +  res[0].product_name + "     Price:$ " + res[0].price);
     console.log("-------");
     startQuestions();
-    connection.end();
-
+    // connection.end();
+    
   });
   
 }
@@ -77,16 +77,32 @@ function buyiPhone() {
   inquirer
   .prompt([
     {
-      name: "action",
+      name: "item",
       type: "input",
       message: "How many units would you like?"
     }
   ])
-  .then(function(updateQuantity) {
+  .then(function(answer) {
     connection.query("SELECT stock_quantity FROM products", function(err, res) {
       if (err) throw err;
-      console.log("Quantity: " + res[0].stock_quantity);
-      updateQuantity();
+     
+      function checkQuantity() {
+        if (res[0].stock_quantity < answer.item) {
+          console.log("Sorry we can not fullfill this order.");
+         
+        }
+        else {
+          console.log("Your order is complete.")
+        }
+        
+      }
+      checkQuantity();
+        // console.log("Quantity: " + res[0].stock_quantity);
+     
+      // updateQuantity();
+       connection.end();
     });
+    
   });
+  
 }
