@@ -28,13 +28,19 @@ function displayItems() {
   connection.query("SELECT * FROM products", function (err, res) {
     if (err) throw err;
 
+    // console.log(res);
     console.log("-------");
-    console.log("Items for sale");
-    console.log("-------");
-    console.log("Item #: " + res[0].item_id + "     Product name: " + res[0].product_name + "     Price:$ " + res[0].price);
-    console.log("-------");
+      console.log("Items for sale");
+      console.log("-------");
+    for ( i = 0; i < res.length; i++) {
+      console.log("Item #: " + res[i].item_id + "     Product name: " + res[i].product_name + "     Price:$ " + res[0].price);
+      console.log("-------");
+     
+      // connection.end();
+    }
+     
     startQuestions();
-    // connection.end();
+    
 
   });
 

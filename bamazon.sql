@@ -13,13 +13,13 @@ CREATE TABLE products (
 );
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("iPhone", "electronics", 1000, 104);
-("Samsung", "electronics", 900, 20);
-("Beats Wireless", "electronics", 399.99, 55);
-("Charging Pad", "electronics", 29.95, 22);
-("AirPods", "electronics", 129.99, 99);
-("Headphones", "electronics", 45.45, 33);
-("iPad", "electronics", 899, 77);
-("MacBook Pro", "electronics", 1400, 89);
-("HomePod", "electronics", 399, 44);
-("Amazon Alexa", "electronics", 56.98, 10);
+VALUES ("iPhone", "electronics", 1000, 104),
+ ("Samsung", "electronics", 900, 20),
+ ("Beats Wireless", "electronics", 399.99, 55),
+ ("Charging Pad", "electronics", 29.95, 22),
+ ("AirPods", "electronics", 129.99, 99),
+ ("Headphones", "electronics", 45.45, 33),
+ ("iPad", "electronics", 899, 77),
+ ("MacBook Pro", "electronics", 1400, 89),
+ ("HomePod", "electronics", 399, 44),
+ ("Amazon Alexa", "electronics", 56.98, 10);
