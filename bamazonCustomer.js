@@ -37,6 +37,7 @@ function displayItems() {
   });
   
 }
+
 /// use of activity 14
 function startQuestions() {
   inquirer
@@ -83,16 +84,29 @@ function buyiPhone() {
     }
   ])
   .then(function(answer) {
-    connection.query("SELECT stock_quantity FROM products", function(err, res) {
+
+    
+
+                           //stock_quantity
+    connection.query("SELECT item_id FROM products", function(err, res) {
       if (err) throw err;
      
       function checkQuantity() {
+                                  //answer.item
         if (res[0].stock_quantity < answer.item) {
           console.log("Sorry we can not fullfill this order.");
-         
+          console.log("Insufficient quantity!");
         }
         else {
-          console.log("Your order is complete.")
+          var update = "UPDATE products SET stock_quantity = " + (res[0].stock_quantity - answer.item) + " WHERE item_id = " + type;
+
+
+          connection.query(update, function(err, res) {
+              if (err) throw err;
+              console.log("Your order is complete.");
+              console.log(res[0].stock_quantity - answer.item);
+
+          })
         }
         
       }
