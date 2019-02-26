@@ -27,6 +27,7 @@ connection.connect(function (err) {
 function displayItems() {
   connection.query("SELECT * FROM products", function (err, res) {
     if (err) throw err;
+
     console.log("-------");
     console.log("Items for sale");
     console.log("-------");
@@ -56,20 +57,36 @@ function startQuestions() {
           break;
 
         case "2":
-          multiSearch();
+          purchases();
           break;
 
         case "3":
-          rangeSearch();
+          purchases();
           break;
 
         case "4":
-          songSearch();
+          purchases();
           break;
 
         case "5":
-          songAndAlbumSearch();
+          purchases();
           break;
+        case "6":
+          purchases();
+          break;
+        case "7":
+          purchases();
+          break;
+        case "8":
+          purchases();
+          break;
+        case "9":
+          purchases();
+          break;
+        case "10":
+          purchases();
+          break;
+
       }
     });
 
@@ -93,14 +110,14 @@ function buyiPhone() {
           if (answer.quantity <= res[0].stock_quantity) {
             console.log("Your order is complete.");
             console.log(res[0].stock_quantity - answer.quantity);
-           
+
             // show total price
             connection.query("SELECT price FROM  products", function (err, res) {
               if (err) throw err;
-            console.log("Your total is: $" + res[0].price * answer.quantity);
+              console.log("Your total is: $" + res[0].price * answer.quantity);
             });
           }
-        
+
           else {
             console.log("Sorry we can not fullfill this order.");
             console.log("Insufficient quantity!");
