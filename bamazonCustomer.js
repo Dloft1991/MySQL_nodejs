@@ -59,7 +59,7 @@ function startQuestions() {
     ]).then(function (answer) {
       switch (answer.product) {
         case "1":
-          buyiPhone();
+          purchases();
           break;
 
         case "2":
@@ -98,7 +98,7 @@ function startQuestions() {
 
 }
 
-function buyiPhone() {
+function purchases() {
   inquirer
     .prompt([
       {
@@ -121,6 +121,11 @@ function buyiPhone() {
             connection.query("SELECT price FROM  products", function (err, res) {
               if (err) throw err;
               console.log("Your total is: $" + res[0].price * answer.quantity);
+            });
+
+            connection.query("SELECT product_name FROM  products", function (err, res) {
+              if (err) throw err;
+              console.log("Enjoy your new. " + res[0].product_name);
             });
           }
 
