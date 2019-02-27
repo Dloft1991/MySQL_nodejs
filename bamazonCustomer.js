@@ -11,7 +11,8 @@ const connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "Dlofton2",
+  password: "
+  ",
   database: "bamazon_DB"
 });
 
